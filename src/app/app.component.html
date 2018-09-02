@@ -1,31 +1,44 @@
 <div class="container">
   <ng-container *ngIf="response$ | async as response; else loading">
-    <div class="salat">
-      <div class="name">Fajr</div>
-      <div class="time">{{ response.data.timings.Fajr }}</div>
-    </div>
-    <div class="salat">
-      <div class="name">Dhuhr</div>
-      <div class="time">{{ response.data.timings.Dhuhr }}</div>
-    </div>
-    <div class="salat">
-      <div class="name">Asr </div>
-      <div class="time">{{ response.data.timings.Asr }}</div>
-    </div>
-    <div class="salat">
-      <div class="name">Maghrib </div>
-      <div class="time">{{ response.data.timings.Maghrib }}</div>
-    </div>
-    <div class="salat">
-      <div class="name">Isha </div>
-      <div class="time">{{ response.data.timings.Isha }}</div>
-    </div>
+    <ng-container *ngIf="response?.data">
+      <div class="salat">
+        <div class="name">Fajr</div>
+        <div class="time">{{ response.data.timings.Fajr }}</div>
+      </div>
+      <div class="salat">
+        <div class="name">Dhuhr</div>
+        <div class="time">{{ response.data.timings.Dhuhr }}</div>
+      </div>
+      <div class="salat">
+        <div class="name">Asr </div>
+        <div class="time">{{ response.data.timings.Asr }}</div>
+      </div>
+      <div class="salat">
+        <div class="name">Maghrib </div>
+        <div class="time">{{ response.data.timings.Maghrib }}</div>
+      </div>
+      <div class="salat">
+        <div class="name">Isha </div>
+        <div class="time">{{ response.data.timings.Isha }}</div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!response?.data">
+      <div class="failure">
+          🙄 vous n'avez peut être pas de connexion internet ? <br/><br/>
+          🤔 ou bien vous n'avez pas accepter le partage de position GPS ? <br/><br/>
+          <button class="w3-button w3-blue" (click)="retry()">Réessayer</button>
+      </div>
+    </ng-container>
   </ng-container>
 </div>
 
 <ng-template #loading>
   <div class="loading">
-    Chargement de données.<br/>
-    Veuillez accepter le partage de position. <br/>
+    <div>
+      <img src="assets/images/launcher-icon-4x.png">
+    </div>
+    <div>
+      Chargement des horaires.
+    </div>
   </div>
 </ng-template>

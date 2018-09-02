@@ -11,4 +11,7 @@ export class AppComponent {
   constructor(private prayerTimesService: PrayerTimesService) {
     this.response$ = this.prayerTimesService.get();
   }
+  retry() {
+    this.response$ = this.prayerTimesService.get();
+  }
 }

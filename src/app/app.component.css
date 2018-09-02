@@ -28,7 +28,17 @@
 
 
 .loading {
-  font-size: 2em;
+  font-size: 1.2em;
   display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+
+.failure {
+  max-width: 70%;
+  font-size: 1.8em;
+  display: flex;
+  flex-direction: column;
   align-self: center;
 }

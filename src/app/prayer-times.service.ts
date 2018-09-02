@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, empty } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, switchMap, map } from 'rxjs/operators';
 
 const API_BASE = 'https://api.aladhan.com/v1/timings/{{TIMESTAMP}}?latitude={{LATITUDE}}&longitude={{LONGITUDE}}&method=2';
 const TIMESTAMP = '{{TIMESTAMP}}';
@@ -29,6 +29,6 @@ export class PrayerTimesService {
   constructor(private http: HttpClient) { }
 
   get() {
-    return this.urlGenerate$.pipe(switchMap(_ => this.http.get<any>(_)), catchError(_ => empty()));
+    return this.urlGenerate$.pipe(switchMap(_ => this.http.get<any>(_)), catchError(_ => of({})));
   }
 }
