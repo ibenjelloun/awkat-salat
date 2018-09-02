@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/awkat-salat",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

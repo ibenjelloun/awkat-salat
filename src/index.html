@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>AwkatSalat</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1abc9c">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <app-root></app-root>
+  <noscript>
+    Veuillez activer le javascript pour permettre le bon fonctionnement de l'application.
+  </noscript>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+        console.log('Service Worker registered');
+      }).catch(function (err) {
+        console.log('Service Worker registration failed: ', err);
+      });
+    }
+  </script>
+</body>
+
+</html>
