@@ -20,7 +20,6 @@ export class PrayerTimesService {
         const url: string = API_BASE.replace(TIMESTAMP, d)
           .replace(LONGITUDE, '' + position.coords.longitude)
           .replace(LATITUDE, '' + position.coords.latitude);
-          console.log(url);
         observer.next(url);
       });
     }
