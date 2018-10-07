@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="screen === 'main'" class="container">
   <ng-container *ngIf="response$ | async as response; else loading">
     <ng-container *ngIf="response?.data">
       <div class="salat">
@@ -21,15 +21,41 @@
         <div class="name">Isha </div>
         <div class="time">{{ response.data.timings.Isha }}</div>
       </div>
+      <div class="options-button" (click)="screen = 'options'">
+        ^
+      </div>
     </ng-container>
     <ng-container *ngIf="!response?.data">
       <div class="failure">
-          🙄 vous n'avez peut être pas de connexion internet ? <br/><br/>
-          🤔 ou bien vous n'avez pas accepter le partage de position GPS ? <br/><br/>
-          <button class="w3-button w3-blue" (click)="retry()">Réessayer</button>
+        🙄 vous n'avez peut être pas de connexion internet ? <br /><br />
+        🤔 ou bien vous n'avez pas accepter le partage de position GPS ? <br /><br />
+        <button class="w3-button w3-blue" (click)="retry()">Réessayer</button>
       </div>
     </ng-container>
   </ng-container>
+</div>
+
+<div class="options-container" *ngIf="screen === 'options'" animStart="slideInUp" [time]="200">
+  <div class="options-close-button" (click)="screen = 'main'">
+    X
+  </div>
+  <div class="options">
+    <mat-select class="first-option" placeholder="Methode de calcul" [(ngModel)]="options.method" (ngModelChange)="changeMethod($event)">
+      <mat-option [value]="0">Shia Ithna-Ansari</mat-option>
+      <mat-option [value]="1">University of Islamic Sciences, Karachi</mat-option>
+      <mat-option [value]="2">Islamic Society of North America</mat-option>
+      <mat-option [value]="3">Muslim World League</mat-option>
+      <mat-option [value]="4">Umm Al-Qura University, Makkah </mat-option>
+      <mat-option [value]="5">Egyptian General Authority of Survey</mat-option>
+      <mat-option [value]="7">Institute of Geophysics, University of Tehran</mat-option>
+      <mat-option [value]="8">Gulf Region</mat-option>
+      <mat-option [value]="9">Kuwait</mat-option>
+      <mat-option [value]="10">Qatar</mat-option>
+      <mat-option [value]="11">Majlis Ugama Islam Singapura, Singapore</mat-option>
+      <mat-option [value]="12">Union Organization islamic de France</mat-option>
+      <mat-option [value]="13">Diyanet İşleri Başkanlığı, Turkey</mat-option>
+    </mat-select>
+  </div>
 </div>
 
 <ng-template #loading>
