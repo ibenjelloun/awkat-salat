@@ -1,5 +1,7 @@
 # AwkatSalat
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ibenjelloun/awkat-salat.svg)](https://greenkeeper.io/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 ## Development server
